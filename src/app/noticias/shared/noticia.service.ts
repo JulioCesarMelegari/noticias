@@ -1,4 +1,3 @@
-import { Istatus } from './Istatus';
 import { Noticia } from './noticia.model';
 import { Injectable } from '@angular/core';
 
@@ -18,7 +17,6 @@ export class NoticiaService {
     const noticias = this.listarNoticias();
     noticia.id = new Date().getTime();
     noticia.data =  Date.now();
-    noticia.status= Istatus[1];
     noticias.push(noticia);
     localStorage['noticias'] = JSON.stringify(noticias);
   }
@@ -48,7 +46,7 @@ export class NoticiaService {
     let noticias: Noticia[] = this.listarNoticias();
     noticias.forEach((obj, index, objs) =>{
       if(id === obj.id){
-        objs[index].status =  objs[index].status = Istatus[1] ? Istatus[2] : Istatus[1];
+        objs[index].fakenews =  !obj.fakenews;
       }
     });
     localStorage['noticias'] = JSON.stringify(noticias);

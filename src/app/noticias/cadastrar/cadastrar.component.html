@@ -1,0 +1,98 @@
+<div class="container">
+  <h1>Cadastrar Noticia:</h1>
+</div>
+
+<div class="container">
+  <form #formNoticia="ngForm" >
+    <div class="row mbottom"> <!--titulo-->
+        <div class="col-xs-9">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Título da Notícia"
+            id="titulo"
+            name="titulo"
+            [(ngModel)]="noticia.titulo"
+            #titulo="ngModel"
+            minlength="5"
+            required
+          >
+          <div *ngIf="titulo.errors && (titulo.dirty||titulo.touched)"
+            class="alert alert-danger">
+            <div [hidden]="!titulo.errors.required">
+              Digite o título da notícia.
+            </div>
+            <div  >
+              o titulo da noticia deve conter ao menos 5 caracteres.
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <br>
+    <div class="row mbottom"> <!--resumo-->
+        <div class="col-xs-9">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Resumo da Notícia"
+            id="descricao"
+            name="descricao"
+            [(ngModel)]="noticia.descricao"
+            #descricao="ngModel"
+            minlength="20"
+            required
+          >
+          <div *ngIf="descricao.errors && (descricao.dirty||descricao.touched)"
+          class="alert alert-danger">
+            <div [hidden]="!descricao.errors.required"  >
+              Digite um resumo da notícia.
+            </div>
+            <div [hidden]="!descricao.errors.minlength" >
+              O resumo deve conter ao menos 20 caracteres.
+            </div>
+          </div>
+        </div>
+    </div>
+    <br>
+    <div class="row mbottom"> <!--texto-->
+        <div class="col-xs-9">
+            <textarea
+              class="form-control"
+              id="texto"
+              name="texto"
+              [(ngModel)]="noticia.texto"
+              #texto="ngModel"
+              minlength="80"
+              required
+              rows="5"
+              placeholder="Texto da notícia"></textarea>
+            <div *ngIf="texto.errors && (texto.dirty|| texto.touched)"
+            class="alert alert-danger">
+              <div  [hidden]="!texto.errors.required" >
+                Digite a notícia.
+              </div>
+              <div  [hidden]="!texto.errors.minlength" >
+                A noticia deve conter ao menos 80 caracteres.
+              </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+        <div class="col-xs-9 col-xs-offset-3">
+          <input
+          type="submit"
+          class="btn btn-success"
+          (click)="cadastrar()"
+          value="Cadastrar"
+          [disabled]="!formNoticia.form.valid">
+        <a [routerLink]="['/noticias']"
+          class="btn btn-default">
+          <span class="glyphicon glyphicon-chevron-left"
+            aria-hidden="true"></span> Voltar
+        </a>
+        </div>
+
+  </form>
+</div>
