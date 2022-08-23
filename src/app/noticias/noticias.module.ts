@@ -5,13 +5,17 @@ import { CommonModule } from '@angular/common';
 import { ListarComponent } from './listar/listar.component';
 import { FormsModule } from '@angular/forms';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
+import { EditarComponent } from './editar/editar.component';
+import { FakeDirective } from './shared/fake.directive';
 
 
 
 @NgModule({
   declarations: [
     ListarComponent,
-    CadastrarComponent
+    CadastrarComponent,
+    EditarComponent,
+    FakeDirective
   ],
   providers:[NoticiaService],
   imports: [

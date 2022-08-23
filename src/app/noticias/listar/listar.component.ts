@@ -25,4 +25,19 @@ export class ListarComponent implements OnInit {
   listarNoticias(): Noticia[]{
     return this.noticiaService.listarNoticias();
   }
+
+  remover($event: any, noticia: Noticia): void{
+    $event.preventDefault();
+    if(confirm('Deseja remover a notícia "' + noticia.titulo +'"?')){
+      this.noticiaService.remover(noticia.id);
+      this.noticias = this.listarNoticias();
+    }
+  }
+
+  alterarStatus(noticia:Noticia):void{
+    if(confirm('Deseja alterar o status da notícia "' + noticia.titulo +'"?')){
+      this.noticiaService.alterarStatus(noticia.id);
+      this.noticias = this.noticiaService.listarNoticias();
+    }
+  }
 }
