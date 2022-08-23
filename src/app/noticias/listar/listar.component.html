@@ -26,7 +26,7 @@
         {{noticia.descricao}}
       </td>
       <td [class.success]="noticia.fakenews">
-        {{noticia.data}}
+        {{noticia.data | date:'dd/MM/yyyy'}}
       </td>
       <td style="width: 70px" class="text-center">
         <input
